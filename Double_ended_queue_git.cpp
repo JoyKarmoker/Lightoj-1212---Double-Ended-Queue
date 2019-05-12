@@ -9,12 +9,11 @@ void pushLeft(int array[], int target, int size, int total_numbers_in_array)
 
     else
     {
-        for(int i =  total_numbers_in_array; i<0; i--)
+        //printf("Total numbers = %d target = %d\n", total_numbers_in_array, target);
+        for(int i =  total_numbers_in_array; i>0; i--)
         {
-            for(int j =  total_numbers_in_array-1; ; j--)
-            {
-                array[i] = array[j];
-            }
+            //printf("array[%d] = %d\n", (i-1), array[i-1]);
+            array[i] = array[i-1];
         }
 
         array[0] = target;
@@ -41,8 +40,11 @@ void pushRight(int array[], int target, int size, int total_numbers_in_array)
 int popLeft(int array[], int total_numbers_in_array)
 {
     int ret = array[0];
+    printf("Total numbers = %d\n",total_numbers_in_array);
+
     for(int i = 0; i<total_numbers_in_array; i++)
     {
+        printf("array[%d] = %d\n", (i+1), array[i+1]);
         array[i+1] = array[i];
     }
 
@@ -85,6 +87,11 @@ int main()
                    pushLeft(arr, num, n, num_in_array);
                     printf("Pushed in left: %d\n", num);
                     num_in_array++;
+                    for(int i =0; i<num_in_array; i++)
+                    {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
                }
 
                else
@@ -102,6 +109,11 @@ int main()
                    pushRight(arr, num, n, num_in_array);
                     printf("Pushed in right: %d\n", num);
                     num_in_array++;
+                    for(int i =0; i<num_in_array; i++)
+                    {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
                }
 
                else
@@ -124,6 +136,12 @@ int main()
                    num = popLeft(arr, num_in_array);
                    printf("Popped from left: %d\n", num);
                     num_in_array--;
+
+                    for(int i =0; i<num_in_array; i++)
+                    {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
                }
            }
 
@@ -140,6 +158,11 @@ int main()
                    num = popRight(arr, num_in_array);
                    printf("Popped from right: %d\n", num);
                     num_in_array--;
+                    for(int i =0; i<num_in_array; i++)
+                    {
+                        printf("%d ", arr[i]);
+                    }
+                    printf("\n");
                }
 
            }
